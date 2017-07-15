@@ -15,9 +15,10 @@ func (p Person) TableName() string {
 
 type Address struct {
 	Id          int64 `gorm:"column:id"`
-	PersonRef   int64 `gorm:"column:person_ref"`
 	PhoneNumber int64 `gorm:"column:phone_number"`
 	FullAddress string `gorm:"column:full_address"`
+	Person      Person `gorm:"ForeignKey:PersonRef;AssociationForeignKey:Id"`
+	PersonRef   int64 `gorm:"column:person_ref"`
 }
 
 func (a Address) TableName() string {

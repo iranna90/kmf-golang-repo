@@ -13,7 +13,8 @@ CREATE TABLE address (
   id           BIGSERIAL                      NOT NULL,
   person_ref   BIGINT REFERENCES persons (id) NOT NULL,
   phone_number BIGINT                         NOT NULL,
-  full_address VARCHAR(500)                   NOT NULL
+  full_address VARCHAR(500)                   NOT NULL,
+  CONSTRAINT unique_per_person UNIQUE (person_ref)
 );
 
 CREATE TABLE daily_transactions (
